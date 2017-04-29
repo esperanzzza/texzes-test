@@ -1,0 +1,19 @@
+{
+  "name": "texzes-test",
+  "version": "1.0.0",
+  "description": "text project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "./node_modules/.bin/gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "texzes-test"
+  },
+  "author": "Veronika Telychko",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
