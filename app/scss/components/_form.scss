@@ -1,0 +1,139 @@
+.form {
+
+&__price {
+	float: left;
+	width: 30%;
+	font-size: 1.625rem;
+	font-weight: 600;
+	color: $color-red;
+}
+
+&__choice {
+	float: right;
+	font-size: 0.75rem;
+}
+
+&__group {
+	float: right;
+	margin-bottom: 40px;
+}
+
+&__bottom {
+	clear: both;
+}
+
+&__color[type='radio'] {
+  	display: none;
+}
+
+&__color[type='radio'] + label::before {
+	border: 3px solid transparent;
+	border-radius: 50%;
+	font-size: 1.625rem;
+	cursor: pointer;
+}
+
+&__color[id='color-black']+label::before {
+   	color: $color-dark;
+}
+
+&__color[id='color-grey']+label::before {
+   	color: $color-light-grey;
+}
+
+&__color[type='radio']:checked + label::before {
+  	border: 3px solid $color-white;
+  	border-radius: 50%;
+  	box-shadow: 0 0 7px $color-blue;
+}
+
+&__bottom {
+	display: flex;
+	justify-content: space-between;
+}
+
+&__quantity {
+	font-size: $font-size--sm;
+}
+
+&__quantity-field[type="number"] {
+	position: relative;
+	box-sizing: border-box;
+	width: 50px;
+	border: none;
+	outline: none;
+	border: 1px solid $color-quantity;
+	padding: 15px;
+	-moz-appearance: textfield;
+}
+
+&__quantity-field[type="number"]::-webkit-outer-spin-button, 
+&__quantity-field[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+&__controls {
+  	position: relative;
+  	cursor: pointer;
+  	text-align: center;
+  	margin-right: 40px;
+}
+
+&__increment {
+  	position: absolute;
+  	top: 5px;
+}
+
+&__decrement {
+  	position: absolute;
+  	bottom: 5px;
+}
+
+&__add {
+   	width: 150px;
+   	box-sizing: border-box;
+   	display: inline-block;
+   	vertical-align: middle;
+   	text-align: center;
+   	color: $color-white;
+   	font-size: 1.063rem;
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    transition-property: color;
+    transition-duration: 0.3s; 
+    border: 1px solid transparent;
+    background: $color-blue;
+    color: $color-white;
+
+	&:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $color-white;
+      transform: scaleY(0);
+      transform-origin: 50% 0;
+      transition-property: transform;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-out; 
+	}
+
+    &:hover, 
+    &:focus, 
+    &:active {
+      color: $color-blue; 
+      border: 1px solid color-blue;
+
+    }
+
+    &:hover:before, 
+    &:focus:before, 
+    &:active:before {
+      transform: scaleY(1); 
+    }
+}
+}
