@@ -73,3 +73,43 @@ gulp.task('default', ['browser-sync', 'html', 'scss', 'scripts'], function() {
     gulp.watch('app/*.html', ['html']);
     gulp.watch('app/js/**/*.js', ['bs-reload']);
 });
+
+gulp.task('clean', function() {
+    return del.sync('docs');
+});
+
+gulp.task('img', function() {
+    return gulp.src('app/img/**/*')
+        .pipe(cache(imagemin({
+            interlaced: true,
+            progressive: true,
+            svgoPlugins: [{
+                removeViewBox: false
+            }],
+            use: [pngquant()]
+        })))
+        .pipe(gulp.dest('docs/img'));
+
+});
+
+gulp.task('build', ['clean', 'img', 'scss', 'scripts'], function() {
+
+    var buildCss = gulp.src(['app/css/*.min.css', 'app/css/main.css'])
+        .pipe(gulp.dest('docs/css'))
+
+
+    var buildFonts = gulp.src('app/fonts/**/*')
+        .pipe(gulp.dest('docs/fonts'))
+
+    var buildJs = gulp.src('app/js/**/*')
+        .pipe(gulp.dest('docs/js'))
+
+
+    var buildHtml = gulp.src('app/*.html')
+        .pipe(gulp.dest('docs'));
+
+});
+
+gulp.task('clear', function() {
+    return cache.clearAll();
+})

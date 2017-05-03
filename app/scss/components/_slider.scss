@@ -1,0 +1,63 @@
+.slider {
+
+	&--grey {
+	display: none;
+	}
+
+&__image {
+	position: absolute;
+	display: none;
+	z-index: -1;
+	top: -33%; 
+	right: 7%;
+
+	&--active {
+		display: block;
+	}
+
+}
+
+&__controls {
+	position: absolute;
+	left: 22%;
+	bottom: 13%;
+	cursor: pointer;
+	text-align: center;
+
+}
+
+&__control {
+	font-size: $font-size--md;
+
+	&:hover {
+		color: $color-red;	
+	}
+
+	&--left {
+		margin-right: 38px;
+	}
+}
+
+&__pagination {
+	position: absolute;
+	left: 15%;
+	bottom: 6%;
+}
+
+&__line {
+	display: inline-block;
+	width: 18px;
+	height: 3px;
+	background: $color-pagination;
+	margin-right: 3px;
+	
+	&:last-child {
+		margin-right: none;
+	}
+
+	&--active {
+		background: $color-blue;
+	}
+
+}
+}

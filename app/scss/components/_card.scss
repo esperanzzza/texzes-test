@@ -2,39 +2,34 @@
 	position: relative;
 	overflow: hidden;
 	box-sizing: border-box;
-	margin: 0 auto;
 	padding-right: 5%;
 	padding-bottom: 50px;
-	transform: translateY(50%);
-	width: 805px;
-	height: 600px; 
+	width: 800px;
 	background: $color-white;
 	box-shadow: 0px 40px 40px 0px rgba(0, 0, 0, 0.35);
+	z-index: 10;
 
 &__logo {
 	margin: 0;
 	padding: 0;
 	display: inline-block;
 	font-size: 0;
-	padding: 22px 20px;
+	padding: 18px 22px;
 	background: $color-logo;
 }
 
-&__image {
-	position: absolute;
-	top: -35%; 
-	right: 7%;
-	z-index: -1;
+&__slider {
+	float: left;
 }
 
 &__features {
 	float: right;
-	width: 45%;
+	width: 42%;
 }
 
 &__number {
 	float: left;
-	width: 82%;
+	width: 85%;
 	font-size: 0.75rem;
 }
 
@@ -43,30 +38,46 @@
 	color: $color-blue;
 }
 
+&__model {
+	margin-bottom: 12px;
+}
+
 &__spec {
 	float: right;
-	font-size: $font-size--sm;
+	font-size: 0.75rem;
 	color: $color-blue;
 	text-transform: uppercase;
 }
 
 &__name {
-	font-size: 1.875rem;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 10px;
+	font-size: 1.813rem;
 	text-transform: uppercase;	
+	font-weight: 400;
+}
+
+&__copyright {
+	font-size: $font-size--base;
 }
 
 &__style {
 	display: block;
 	text-transform: capitalize;
+	font-size: 1.5rem;
+	line-height: 1.5;
 }
 
 &__details {
 	font-size: 1.063rem;
 	color: $color-grey;
+	line-height: 1.4;
+	margin-bottom: 23px;
 }
 
 &__description {
-	margin-bottom: 35px;
+	margin-bottom: 30px;
 	line-height: 1.6;
 }
 
@@ -82,12 +93,12 @@
 	}
 
 	&:last-of-type {
-		margin-right: 30px;
+		margin-right: 25px;
 	}
 }
 
 &__ranking {
-	margin-bottom: 30px;	
+	margin-bottom: 27px;	
 }
 
 &__grade {
@@ -98,5 +109,11 @@
 &__reviews {
 	font-size: $font-size--sm;
 	color: $color-grey;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+		color: $color-red;
+	}
 }
 }

@@ -5,9 +5,9 @@ body {
     font-style: normal;
     line-height: normal;
     color: $color-dark;
-    background: url(../img/bg--blue.jpg) center no-repeat;
-    background-size: cover;
     height: 100vh;
+	background: url(../img/bg--blue.jpg) center no-repeat;
+    background-size: 100% 100%;
 }
 
 .clearfix:after {
@@ -21,4 +21,24 @@ button {
 	outline: none;
 	background: transparent;
 	cursor: pointer;
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+  animation-name: zoomIn;
 }
