@@ -12,12 +12,14 @@ $(document).ready(function() {
         slide = $('.slider__image'),
         slideLine = $('.slider__line'),
         currentSlideIndex = $('.slider__image--active').index(),
+        slideLineIndex = $('.slider__line').index(),
         currentSlide = $('.slider__image--active'),
         currentSlideClass = 'slider__image--active animated zoomIn',
-        currentLine = 'slider__line--active',
+        currentLine = $('.slider__line--active'),
+        currentLineClass = 'slider__line--active',
         currentLineIndex = $('.slider__image--active').index();
 
-        initBg();
+    initBg();
 
     formControls.each(function() {
         countZero(1, 0);
@@ -70,6 +72,17 @@ $(document).ready(function() {
                 currentSlideIndex++;
             }
 
+            moveRight();
+
+            function moveRight() {
+                if (currentLineIndex != slideLine.last().index()) {
+                    slideLine.eq(currentLineIndex).removeClass(currentLineClass).next().addClass(currentLineClass);
+                    currentLineIndex++;
+
+                }
+
+            };
+
         });
 
 
@@ -85,11 +98,19 @@ $(document).ready(function() {
 
             }
 
+            moveLeft();
+
+            function moveLeft() {
+                if (currentLineIndex != slideLine.first().index()) {
+                    slideLine.eq(currentLineIndex).removeClass(currentLineClass).prev().addClass(currentLineClass);
+                    currentLineIndex--;
+
+                }
+            };
 
         });
 
     });
-
 
     function countZero(num, count) {
         var numZero = num + '';
@@ -101,13 +122,13 @@ $(document).ready(function() {
 
 
     function initBg() {
-    $('body').backstretch([
-        'img/bg-bright.jpg', 'img/bg--blurred.jpg', 'img/bg--blue.jpg', 
-    ], {
-        duration: 1000,
-        fade: 750
-    });
-}
+        $('body').backstretch([
+            'img/bg-bright.jpg', 'img/bg--blurred.jpg', 'img/bg--blue.jpg',
+        ], {
+            duration: 1000,
+            fade: 750
+        });
+    }
 
 
 });
