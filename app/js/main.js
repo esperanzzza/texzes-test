@@ -9,24 +9,31 @@ $(document).ready(function() {
         sliderControls = $('.slider__controls'),
         left = $('.slider__control--left'),
         right = $('.slider__control--right'),
-        slider= $('.slider'),
-        formColor = $('form__color'),
         slide = $('.slider__image'),
         slideLine = $('.slider__line'),
         currentSlideIndex = $('.slider__image--active').index(),
         currentSlide = $('.slider__image--active'),
+        currentSlideClass = 'slider__image--active animated zoomIn',
         currentLine = 'slider__line--active',
-        currentLineIndex = $('.slider__image--active').index(),
-        targetVal = currentSlide.attr('data-val');
+        currentLineIndex = $('.slider__image--active').index();
 
+        initBg();
 
     formControls.each(function() {
+        countZero(1, 0);
 
         btnUp.click(function() {
             var oldValue = parseFloat(input.val());
             var newVal = oldValue + 1;
-            input.val(newVal);
+            if (newVal < 10) {
+                input.val('0' + newVal);
+
+            } else {
+                input.val(newVal);
+            }
+
             input.trigger('change');
+
         });
 
         btnDown.click(function() {
@@ -36,55 +43,18 @@ $(document).ready(function() {
             } else {
                 var newVal = oldValue - 1;
             }
-            input.val(newVal);
+            if (newVal < 10) {
+                input.val('0' + newVal);
+
+            } else {
+                input.val(newVal);
+            }
+
             input.trigger('change');
-        });
-
-    });
-
-sliderControls.each(function() {
-
-
-        right.click(function() {
-
-            if (currentSlideIndex === slide.last().index()) {
-                slide.eq(currentSlideIndex).removeClass('slider__image--active animated zoomIn').first().addClass('slider__image--active animated zoomIn');
-                currentSlideIndex++;
-            } else {
-
-                slide.eq(currentSlideIndex).removeClass('slider__image--active animated zoomIn').next().addClass('slider__image--active animated zoomIn');
-            }
-
-            slideMove();
-
-        });
-
-
-        left.click(function() {
-
-            if (currentSlideIndex === slide.first().index()) {
-                slide.eq(currentSlideIndex).removeClass('slider__image--active animated zoomIn').last().addClass('slider__image--active animated zoomIn');
-                 currentSlideIndex--;
-
-            } else {
-
-                slide.eq(currentSlideIndex).removeClass('slider__image--active animated zoomIn').prev().addClass('slider__image--active animated zoomIn');
-
-            }
-
-            slideMove();
 
         });
 
     });
-
-
-    function slideMove() {
-
-        if (targetVal === currentSlide.attr('data-val')) {
-            slideLine.addClass(currentLine);
-        };
-    };
 
     sliderControls.each(function() {
 
@@ -92,16 +62,13 @@ sliderControls.each(function() {
         right.click(function() {
 
             if (currentSlideIndex === slide.last().index()) {
-                slide.eq(currentSlideIndex).removeClass('slider__image--active animated zoomOut').first().addClass('slider__image--active animated zoomIn');
+                slide.eq(currentSlideIndex).removeClass(currentSlideClass).first().addClass(currentSlideClass);
 
             } else {
 
-                slide.eq(currentSlideIndex).removeClass('slider__image--active animated zoomOut').next().addClass('slider__image--active animated zoomIn');
+                slide.eq(currentSlideIndex).removeClass(currentSlideClass).next().addClass(currentSlideClass);
                 currentSlideIndex++;
-
             }
-
-            slideMove();
 
         });
 
@@ -109,30 +76,38 @@ sliderControls.each(function() {
         left.click(function() {
 
             if (currentSlideIndex === slide.first().index()) {
-                slide.eq(currentSlideIndex).removeClass('slider__image--active').last().addClass('slider__image--active animated zoomIn');
+                slide.eq(currentSlideIndex).removeClass(currentSlideClass).last().addClass(currentSlideClass);
 
             } else {
 
-                slide.eq(currentSlideIndex).removeClass('slider__image--active animated zoomOut').prev().addClass('slider__image--active animated zoomIn');
+                slide.eq(currentSlideIndex).removeClass(currentSlideClass).prev().addClass(currentSlideClass);
                 currentSlideIndex--;
 
             }
 
-            slideMove();
 
         });
 
     });
 
 
-    function slideMove() {
+    function countZero(num, count) {
+        var numZero = num + '';
+        while (numZero.length < count) {
+            numZero = "0" + numZero;
+        }
+        return numZero;
+    }
 
-      slideLine.each(function(event){ 
 
-        if (targetVal === $(event.target).attr('data-val')) {
-            $(event.target).addClass(currentLine);
-      }
+    function initBg() {
+    $('body').backstretch([
+        'img/bg-bright.jpg', 'img/bg--blurred.jpg', 'img/bg--blue.jpg', 
+    ], {
+        duration: 1000,
+        fade: 750
     });
-  };
+}
+
 
 });

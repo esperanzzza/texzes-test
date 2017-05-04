@@ -6,29 +6,30 @@ body {
     line-height: normal;
     color: $color-dark;
     height: 100vh;
-	background: url(../img/bg--blue.jpg) center no-repeat;
+	  background: url(../img/bg--blue.jpg) center no-repeat;
     background-size: 100% 100%;
 }
 
 .clearfix:after {
-	content: '';
-	display: table;
-	clear: both;
+  	content: '';
+  	display: table;
+  	clear: both;
 }
 
 button {
-	border: none;
-	outline: none;
-	background: transparent;
-	cursor: pointer;
+  	border: none;
+  	outline: none;
+  	background: transparent;
+  	cursor: pointer;
 }
 
 .animated {
-  animation-duration: 1s;
-  animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-fill-mode: both;
 }
 
 @keyframes zoomIn {
+
   from {
     opacity: 0;
     transform: scale3d(.3, .3, .3);
@@ -40,5 +41,5 @@ button {
 }
 
 .zoomIn {
-  animation-name: zoomIn;
+    animation-name: zoomIn;
 }
